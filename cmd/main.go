@@ -1,7 +1,7 @@
 package main
 
 import (
-	"net/http"
+	// "net/http"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -39,7 +39,7 @@ type Player struct {
 
 type Board struct {
 	Pieces []Piece		`json:"pieces"`
-	EatedPieces []Piece	`json:"eaten_pieces"`
+	EatenPieces []Piece	`json:"eaten_pieces"`
 }
 
 func init_board() *Board {
@@ -104,7 +104,7 @@ func main() {
 
 	e.GET("/", index)
 
-	e.POST("/api/create_game/:hostname", create_game)
+	// e.POST("/api/create_game/:hostname", create_game)
 
 	e.Logger.Fatal(e.Start(":42069"))
 }
@@ -113,22 +113,32 @@ func index(c echo.Context) error {
 	return c.File("views/index.html")
 }
 
-func create_game(c echo.Context) error {
-	hp := Player {
-		UserName: c.Param("hostname"),
-		Color: White,
-	}
+// func create_game(c echo.Context) error {
+// 	hp := Player {
+// 		UserName: c.Param("hostname"),
+// 		Color: White,
+// 	}
+// 
+// 	b := init_board()
+// 
+// 	g := Game {
+// 		Board: *b,
+// 		Players: [2]Player {
+// 			hp,
+// 		},
+// 	}
+// 
+// 	games = append(games, g)
+// 
+// 	return c.JSON(http.StatusOK, &g)
+// }
 
-	b := init_board()
-
-	g := Game {
-		Board: *b,
-		Players: [2]Player {
-			hp,
-		},
-	}
-
-	games = append(games, g)
-
-	return c.JSON(http.StatusOK, &g)
-}
+// func connect_to_game(c echo.Context) error {
+// 	index := strconv.Atoi(c.Params("id"))
+// 	if index < 0 || index >= game.len() {
+// 		return c.JSON(400, "fuck")
+// 	}
+// 
+// 	game = remove(game, index)
+// 	return c.Redirect(http.StatusRedirect, "/", nil)
+// }

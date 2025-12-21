@@ -1,8 +1,11 @@
 :root {
-    --board-size: 800px;
+    --board-size: 720px;
     --cell-size: calc(var(--board-size) / 8);
 }
+
 #board {
+    margin: 0;
+    padding: 0;
     width: var(--board-size);
     height: var(--board-size);
     margin: auto;
@@ -12,14 +15,23 @@
 #board tr {
     margin: 0;
     padding: 0;
+    width: var(--cell-size);
+    height: var(--cell-size);
+    max-width: var(--cell-size);
+    max-height: var(--cell-size);
+    min-width: var(--cell-size);
+    min-height: var(--cell-size);
 }
 
 #board td {
-    width: var(--cell-size);
-    height: var(--cell-size);
     margin: 0;
     padding: 0;
-    border: solid black 1px;
+    width: var(--cell-size);
+    height: var(--cell-size);
+    max-width: var(--cell-size);
+    max-height: var(--cell-size);
+    min-width: var(--cell-size);
+    min-height: var(--cell-size);
 }
 
 #board tr:nth-child(odd) td:nth-child(odd).chosen {
@@ -55,6 +67,8 @@
 }
 
 #board .cell {
+    margin: 0;
+    padding: 0;
     width: var(--cell-size);
     height: var(--cell-size);
 }
@@ -62,4 +76,49 @@
 #board .win {
     color: green;
     font-size: 2em;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+nav {
+    margin-bottom: 20px;
+}
+
+nav a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+nav a.router-link-active {
+    font-weight: bold;
+    color: #000;
+}
+
+button {
+    margin: 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+input {
+    padding: 8px;
+    margin: 5px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
